@@ -1,8 +1,6 @@
-/* client/main.css */
-
 body.custom-background {
   box-sizing: border-box;
-  background-color: #f5f7fa;
+  background-color: #e8ebf0;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -11,3 +9,9 @@ body.custom-background {
   font-family: sans-serif;
 }
 
+.nav-tabs .nav-item.show .nav-link, 
+.nav-tabs .nav-link.active {
+  border-bottom: 3px solid #3f285e !important;
+  background-color: #e8ebf0 !important;
+  font-weight: bold;
+}

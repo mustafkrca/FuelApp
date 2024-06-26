@@ -1,4 +1,4 @@
-/* imports/ui/fuelPrices.css */
+/* imports/ui/statePrices.css */
 
 
 
@@ -13,18 +13,17 @@
   padding: 10px 0;
 }
 
-.fuel-row {
+.fuel-row { 
   background-color: white;
   border-radius: 8px;
   margin-bottom: 10px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect for rows */
-  padding: 10px 0;
+  padding: 20px 0;
   display: flex;
   align-items: center; /* Align items vertically center */
 }
 
 .fuel-cell {
-  padding: 10px;
   display: flex;
   align-items: center; /* Align items vertically center */
 }
