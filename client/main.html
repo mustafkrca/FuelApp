@@ -7,20 +7,7 @@
 </head>
 <body class="custom-background">
   <div class="container">
-    <h1 class="mb-4" >
-      <img src="/assets/petrol-pump.png" style="width: 4%" />
-      Fuel Prices
-    </h1>
-    <nav>
-      <div class="nav nav-tabs" id="nav-tab" role="tablist">
-        <a class="nav-item nav-link active" id="nav-state-tab" data-toggle="tab" href="#statePrices" role="tab">State Prices</a>
-        <a class="nav-item nav-link" id="nav-city-tab" data-toggle="tab" href="#cityPrices" role="tab">City Prices</a>
-      </div>
-    </nav>
-    <div class="tab-content" id="nav-tabContent">
-      <div class="tab-pane fade show active" id="statePrices" role="tabpanel">{{> statePrices}}</div>
-      <div class="tab-pane fade" id="cityPrices" role="tabpanel">{{> cityPrices}}</div>
-    </div>
+    {{> navbarSlider}}
   </div>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
