@@ -3,8 +3,8 @@
     <div class="container">
       <div class="fuel-table">
         <div class="row fuel-header">
-          <div class="col-2">Eyalet</div>
-          <div class="col-10 d-flex justify-content-end">
+          <div class="col-4">Eyalet</div>
+          <div class="col-8 d-flex justify-content-end">
             <div class="col-2 text-center">Regular</div>
             <div class="col-2 text-center">Mid Grade</div>
             <div class="col-2 text-center">Premium</div>
@@ -13,12 +13,12 @@
         </div>
         {{#each states}}
         <div class="row fuel-row">
-          <div class="col-2 fuel-cell">
+          <div class="col-4 fuel-cell">
             <div class="fuel-city-icon">{{stateCode}}</div>
             <!-- <div class="fuel-city-icon">{{cityAbbreviation}}</div> -->
             <div>{{state}}</div>
           </div>
-          <div class="col-10 d-flex justify-content-end">
+          <div class="col-8 d-flex justify-content-end">
             <div class="col-2 text-center">${{regular}}</div>
             <div class="col-2 text-center">${{midgrade}}</div>
             <div class="col-2 text-center">${{premium}}</div>

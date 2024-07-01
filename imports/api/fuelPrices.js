@@ -1,6 +1,6 @@
 import { HTTP } from 'meteor/http';
 
-const API_KEY = 'apikey 7EQGCmwapOtM2HNr9C39Y8:1CQVhCFCXKhMVZgctZK4Dn';
+const API_KEY = 'apikey 7l9sdeCOtth5m1sgK7PaRH:1lCpoKnZugHUOaPIopX19Q';
 const BASE_URL = 'https://api.collectapi.com/gasPrice';
 
 export const fetchStatePrices = () => {
@@ -20,9 +20,9 @@ export const fetchStatePrices = () => {
   });
 };
 
-export const fetchCityPrices = (state) => {
+export const fetchCityPrices = (stateCode) => {
   return new Promise((resolve, reject) => {
-    HTTP.call('GET', `${BASE_URL}/stateUsaPrice?state=${state}`, {
+    HTTP.call('GET', `${BASE_URL}/stateUsaPrice?state=${stateCode}`, {
       headers: {
         'content-type': 'application/json',
         authorization: API_KEY,
@@ -30,7 +30,7 @@ export const fetchCityPrices = (state) => {
     }, (error, result) => {
       if (error) {
         reject(error);
-      } else {
+      } else {  
         resolve(JSON.parse(result.content));
       }
     });

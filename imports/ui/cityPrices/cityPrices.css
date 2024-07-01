@@ -1,42 +1,46 @@
-/* imports/ui/cityPrices.css */
-
-
-
 .fuel-table {
-    width: 100%;
-    margin: 20px auto;
-  }
-  
-  .fuel-header {
-    font-weight: bold;
-    color: #b0b0b0; /* Lighter color for headers */
-    padding: 10px 0;
-  }
-  
-  .fuel-row {
-    background-color: white;
-    border-radius: 8px;
-    margin-bottom: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect for rows */
-    padding: 20px 0;
-    display: flex;
-    align-items: center; /* Align items vertically center */
-  }
-  
-  .fuel-cell {
-    display: flex;
-    align-items: center; /* Align items vertically center */
-  }
-  
-  .fuel-city-icon {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    background-color: #6200ea; /* Purple background color */
-    color: white;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-right: 10px; /* Space between icon and text */
-  }
-  
+  width: 100%;
+  margin: 20px auto;
+}
+
+.fuel-header {
+  font-weight: bold;
+  color: #b0b0b0; /* Lighter color for headers */
+  padding: 10px 0;
+}
+
+.fuel-row {
+  background-color: white;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Shadow effect for rows */
+  padding: 20px 0;
+  display: flex;
+  align-items: center; /* Align items vertically center */
+}
+
+.fuel-cell {
+  display: flex;
+  align-items: center; /* Align items vertically center */
+}
+
+.fuel-city-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background-color: #6200ea; /* Purple background color */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-right: 18px; /* Space between icon and text */
+}
+
+.state-row {
+  border: 2px solid #ea00e6; /* Purple border for state row */
+  margin-bottom: 20px; /* Increased margin for state row */
+}
+
+.state-icon {
+  background-color: #ea00e6; /* Purple background color for state icon */
+}

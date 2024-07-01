@@ -1,5 +1,5 @@
 import { Template } from 'meteor/templating';
-import { getStates } from '../../lib/datas.js'; // Veri getirmek için
+import { getStates, setSelectedState } from '../../lib/datas.js'; // Import setSelectedState and getSelectedState
 import { ReactiveVar } from 'meteor/reactive-var';
 
 import './navbarSlider.html';   
@@ -13,14 +13,15 @@ Template.navbarSlider.onCreated(function () {
 
 Template.navbarSlider.helpers({
   states() {
-    const statesData = getStates(); // Tüm eyalet bilgilerini al
+    const statesData = getStates(); // Get all state information
 
     if (statesData) {
       return statesData.map(state => ({
-        state: state.name
+        state: state.state,
+        stateCode: state.stateCode
       }));
     } else {
-      return []; // Veri yoksa boş dizi döndür
+      return []; // Return empty array if no data available
     }
   },
   isActiveTab(tabName) {
@@ -36,5 +37,9 @@ Template.navbarSlider.events({
     } else if (tabId === 'nav-city-tab') {
       instance.activeTab.set('cityPrices');
     }
+  },
+  'click .dropdown-item'(event) {
+    const selectedState = event.target.text.trim(); // Get the selected state from dropdown item text
+    setSelectedState(selectedState); // Set the selected state using setSelectedState function
   }
 });

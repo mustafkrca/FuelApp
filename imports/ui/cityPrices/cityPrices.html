@@ -1,32 +1,46 @@
-    <!-- imports/ui/cityPrices.html -->
 <template name="cityPrices">
-    <div class="container">
-      <div class="fuel-table">
-        <div class="row fuel-header">
-          <div class="col-2">Şehir</div>
-          <div class="col-10 d-flex justify-content-end">
-            <div class="col-2 text-center">Regular</div>
-            <div class="col-2 text-center">Mid Grade</div>
-            <div class="col-2 text-center">Premium</div>
-            <div class="col-2 text-center">Diesel</div>
-          </div>
+  <div class="container">
+    <div class="fuel-table">
+      <div class="row fuel-header">
+        <div class="col-4">Şehir</div> <!-- Increased width for city name -->
+        <div class="col-8 d-flex justify-content-end">
+          <div class="col-2 text-center">Regular</div>
+          <div class="col-2 text-center">Mid Grade</div>
+          <div class="col-2 text-center">Premium</div>
+          <div class="col-2 text-center">Diesel</div>
         </div>
-        {{#each cities}}
-        <div class="row fuel-row">
-          <div class="col-2 fuel-cell">
-            <div class="fuel-city-icon">AK</div>
-            <!-- <div class="fuel-city-icon">{{cityAbbreviation}}</div> -->
-            <div>{{city}}</div>
-          </div>
-          <div class="col-10 d-flex justify-content-end">
-            <div class="col-2 text-center">{{regular}}</div>
-            <div class="col-2 text-center">{{midgrade}}</div>
-            <div class="col-2 text-center">{{premium}}</div>
-            <div class="col-2 text-center">{{diesel}}</div>
-          </div>
-        </div>
-        {{/each}}
       </div>
+
+      {{#if state}}
+      <div class="row fuel-row state-row">
+        <div class="col-4 fuel-cell"> <!-- Increased width for city name -->
+          <div class="fuel-city-icon state-icon">{{state.stateCode}}</div> <!-- State icon -->
+          <div>{{state.name}}</div> <!-- Display state name -->
+        </div>
+        <div class="col-8 d-flex justify-content-end">
+          <div class="col-2 text-center">${{state.gasoline}}</div>
+          <div class="col-2 text-center">${{state.midGrade}}</div>
+          <div class="col-2 text-center">${{state.premium}}</div>
+          <div class="col-2 text-center">${{state.diesel}}</div>
+        </div>
+      </div>
+      {{/if}}
+
+      {{#each cities}}
+      <div class="row fuel-row">
+        <div class="col-4 fuel-cell"> <!-- Increased width for city name -->
+          <div class="fuel-city-icon">{{cityCode}}</div>
+          <!-- <div class="fuel-city-icon">{{cityAbbreviation}}</div> -->
+          <div>{{name}}</div>
+        </div>
+        <div class="col-8 d-flex justify-content-end">
+          <div class="col-2 text-center">${{gasoline}}</div>
+          <div class="col-2 text-center">${{midGrade}}</div>
+          <div class="col-2 text-center">${{premium}}</div>
+          <div class="col-2 text-center">${{diesel}}</div>
+        </div>
+      </div>
+      {{/each}}
     </div>
-  </template>
-  
+  </div>
+</template>

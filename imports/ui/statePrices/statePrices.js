@@ -10,6 +10,22 @@ Template.statePrices.onCreated(function () {
     .then(([statePricesData, stateCodesData]) => {
       setStates(statePricesData.result);
       setStateCodes(stateCodesData); // Assuming stateCodesData is an array
+
+      const statePrices = getStates();
+      const stateCodes = getStateCodes();
+      const newStateCodes = statePrices.map(state => {
+        const stateCodeObj = stateCodes.find(code => code.name === state.name);
+        return {
+          state: state.name,
+          stateCode: stateCodeObj ? stateCodeObj.code : '', // Get corresponding state code or empty string if not found
+          regular: state.gasoline,
+          midgrade: state.midGrade,
+          premium: state.premium, 
+          diesel: state.diesel
+        };
+      });
+
+      setStates(newStateCodes);
     })
     .catch(error => {
       console.error('API calls failed:', error);
@@ -18,24 +34,6 @@ Template.statePrices.onCreated(function () {
 
 Template.statePrices.helpers({
   states() {
-    const statePrices = getStates();
-    const stateCodes = getStateCodes();
-    const newStateCodes = statePrices.map(state => {
-      const stateCodeObj = stateCodes.find(code => code.name === state.name);
-      return {
-        state: state.name,
-        stateCode: stateCodeObj ? stateCodeObj.code : '', // Get corresponding state code or empty string if not found
-        regular: state.gasoline,
-        midgrade: state.midGrade,
-        premium: state.premium,
-        diesel: state.diesel
-      };
-    });
-
-    if (statePrices && stateCodes) {
-      return newStateCodes;
-    } else {
-      return []; // Return empty array if data is not available
-    }
+    return getStates();
   }
 });
