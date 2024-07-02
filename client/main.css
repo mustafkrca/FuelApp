@@ -7,7 +7,7 @@ body.custom-background {
 
 .nav-tabs .nav-item.show .nav-link, 
 .nav-tabs .nav-link.active {
-  border-bottom: 3px solid #3f285e !important;
+  border-bottom: 3px solid rgb(5 82 195) !important;
   background-color: #e8ebf0 !important;
   font-weight: bold;
 }

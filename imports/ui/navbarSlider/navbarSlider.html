@@ -1,7 +1,7 @@
 <template name="navbarSlider">
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>
-      <img src="/assets/petrol-pump.png" style="width: 5%" />
+      <img src="/assets/petrol-pump.png" style="width: 3vh" />
       Fuel Prices
     </h1>
     {{#if isActiveTab 'cityPrices'}}
@@ -18,23 +18,23 @@
         </button>
         <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
           {{#each states}}
-            <a class="dropdown-item" href="#">{{stateCode}} :  {{state}}</a>
+            <a class="dropdown-item" href="#">{{stateCode}} - {{state}}</a>
           {{/each}}
         </div>
       </div>
     {{/if}}
   </div>
   <nav>
-    <div class="nav nav-tabs" style="color: black;" id="nav-tab" role="tablist">
+    <div class="nav nav-tabs"  id="nav-tab" role="tablist">
       <a
-        class="nav-item nav-link active"
+        class="nav-item nav-link active text-muted"
         id="nav-state-tab"
         data-toggle="tab"
         href="#statePrices"
         role="tab"
       >State Prices</a>
       <a
-        class="nav-item nav-link"
+        class="nav-item nav-link text-muted"
         id="nav-city-tab"
         data-toggle="tab"
         href="#cityPrices"
