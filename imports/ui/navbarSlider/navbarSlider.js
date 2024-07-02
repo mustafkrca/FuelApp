@@ -4,7 +4,6 @@ import { ReactiveVar } from 'meteor/reactive-var';
 
 import './navbarSlider.html';   
 import '../statePrices/statePrices.js';
-import '../statePrices/statePrices.css';
 import '../statePrices/statePrices.html';
 
 Template.navbarSlider.onCreated(function () {

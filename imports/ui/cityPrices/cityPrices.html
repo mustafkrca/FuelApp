@@ -1,21 +1,29 @@
 <template name="cityPrices">
-  <div class="container">
-    <div class="fuel-table">
-      <div class="row fuel-header">
-        <div class="col-4">Şehir</div> <!-- Increased width for city name -->
+  <div class="container mt-5">
+    <div class="w-100 my-4">
+      <div class="row font-weight-bold text-secondary py-2">
+        <div class="col-4">City</div>
         <div class="col-8 d-flex justify-content-end">
-          <div class="col-2 text-center">Regular</div>
+          <div class="col-2 text-center">Gasoline</div>
           <div class="col-2 text-center">Mid Grade</div>
           <div class="col-2 text-center">Premium</div>
           <div class="col-2 text-center">Diesel</div>
         </div>
       </div>
 
-      {{#if state}}
-      <div class="row fuel-row state-row">
-        <div class="col-4 fuel-cell"> <!-- Increased width for city name -->
-          <div class="fuel-city-icon state-icon">{{state.stateCode}}</div> <!-- State icon -->
-          <div>{{state.name}}</div> <!-- Display state name -->
+      {{#if stateBool}}
+      <div
+        class="row bg-white rounded mb-3 shadow-sm py-3 align-items-center"
+        style="border: 2px solid #ea00e6"
+      >
+        <div class="col-4 d-flex align-items-center">
+          <div
+            class="text-white rounded-circle d-flex justify-content-center align-items-center mr-3"
+            style="width: 32px; height: 32px; background-color: #ea00e6"
+          >
+            {{state.stateCode}}
+          </div>
+          <div>{{state.name}}</div>
         </div>
         <div class="col-8 d-flex justify-content-end">
           <div class="col-2 text-center">${{state.gasoline}}</div>
@@ -24,13 +32,23 @@
           <div class="col-2 text-center">${{state.diesel}}</div>
         </div>
       </div>
+      {{else}}
+      <div class="row bg-white rounded mb-3 mt-3 shadow-sm py-3 align-items-center text-center text-danger font-weight-bold">
+        <div class="col-12">
+          Please Select a State.
+        </div>
+      </div>
       {{/if}}
 
       {{#each cities}}
-      <div class="row fuel-row">
-        <div class="col-4 fuel-cell"> <!-- Increased width for city name -->
-          <div class="fuel-city-icon">{{cityCode}}</div>
-          <!-- <div class="fuel-city-icon">{{cityAbbreviation}}</div> -->
+      <div class="row bg-white rounded mb-2 shadow-sm py-3 align-items-center">
+        <div class="col-4 d-flex align-items-center">
+          <div
+            class="bg-primary text-white rounded-circle d-flex justify-content-center align-items-center mr-3"
+            style="width: 32px; height: 32px"
+          >
+            {{cityCode}}
+          </div>
           <div>{{name}}</div>
         </div>
         <div class="col-8 d-flex justify-content-end">

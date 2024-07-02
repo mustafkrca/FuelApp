@@ -2,12 +2,16 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { getSelectedState, setCities, getCities } from '../../lib/datas.js';
 import './cityPrices.html';
-import './cityPrices.css';
 import { fetchCityPrices } from '../../api/fuelPrices.js';
 
 Template.cityPrices.onCreated(function () {
+    this.state = new ReactiveVar(null); // Initialize reactive variable for state
+
     this.autorun(() => {
+        
+
         const selectedState = getSelectedState();
+        console.log('selectedState ----------------------------------',selectedState)
         if (selectedState) {
             fetchCityPrices(selectedState.split(' ')[0])
                 .then(citiesData => {
@@ -22,7 +26,6 @@ Template.cityPrices.onCreated(function () {
         }
     });
 
-    this.state = new ReactiveVar(null); // Initialize reactive variable for state
 });
 
 Template.cityPrices.helpers({
@@ -45,5 +48,14 @@ Template.cityPrices.helpers({
             ...state,
             stateCode: stateCode
         };
+    },
+    stateBool(){
+        const selectedState = getSelectedState();
+
+        if (!selectedState) {
+            return false;
+        }
+        return true;
     }
+
 });

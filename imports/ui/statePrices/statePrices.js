@@ -1,7 +1,6 @@
 import { Template } from 'meteor/templating';
 import { setStates, getStates, setStateCodes, getStateCodes } from '../../lib/datas.js';
 import './statePrices.html';
-import './statePrices.css';
 import { fetchStatePrices, fetchStateCodes } from '../../api/fuelPrices.js';
 
 Template.statePrices.onCreated(function () {
@@ -17,7 +16,7 @@ Template.statePrices.onCreated(function () {
         const stateCodeObj = stateCodes.find(code => code.name === state.name);
         return {
           state: state.name,
-          stateCode: stateCodeObj ? stateCodeObj.code : '', // Get corresponding state code or empty string if not found
+          stateCode: stateCodeObj ? stateCodeObj.code : '', 
           regular: state.gasoline,
           midgrade: state.midGrade,
           premium: state.premium, 
