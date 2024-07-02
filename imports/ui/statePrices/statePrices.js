@@ -1,34 +1,47 @@
+//imports/ui/statePrices/statePrices.js
+
 import { Template } from 'meteor/templating';
+import { Meteor } from 'meteor/meteor';
 import { setStates, getStates, setStateCodes, getStateCodes } from '../../lib/datas.js';
 import './statePrices.html';
-import { fetchStatePrices, fetchStateCodes } from '../../api/fuelPrices.js';
 
 Template.statePrices.onCreated(function () {
-  // Fetch state prices and codes
-  Promise.all([fetchStatePrices(), fetchStateCodes()])
-    .then(([statePricesData, stateCodesData]) => {
-      setStates(statePricesData.result);
-      setStateCodes(stateCodesData); // Assuming stateCodesData is an array
+  const instance = this;
 
-      const statePrices = getStates();
-      const stateCodes = getStateCodes();
-      const newStateCodes = statePrices.map(state => {
-        const stateCodeObj = stateCodes.find(code => code.name === state.name);
-        return {
-          state: state.name,
-          stateCode: stateCodeObj ? stateCodeObj.code : '', 
-          regular: state.gasoline,
-          midgrade: state.midGrade,
-          premium: state.premium, 
-          diesel: state.diesel
-        };
+  instance.autorun(() => {
+    Meteor.call('fetch.statePrices', (error, statePricesData) => {
+      if (error) {
+        console.error('Error fetching state prices:', error);
+        return;
+      }
+
+      Meteor.call('fetch.stateCodes', (error, stateCodesData) => {
+        if (error) {
+          console.error('Error fetching state codes:', error);
+          return;
+        }
+
+        setStates(statePricesData.result);
+        setStateCodes(stateCodesData); // Assuming stateCodesData is an array
+
+        const statePrices = getStates();
+        const stateCodes = getStateCodes();
+        const newStateCodes = statePrices.map(state => {
+          const stateCodeObj = stateCodes.find(code => code.name === state.name);
+          return {
+            state: state.name,
+            stateCode: stateCodeObj ? stateCodeObj.code : '', 
+            regular: state.gasoline,
+            midgrade: state.midGrade,
+            premium: state.premium, 
+            diesel: state.diesel
+          };
+        });
+
+        setStates(newStateCodes);
       });
-
-      setStates(newStateCodes);
-    })
-    .catch(error => {
-      console.error('API calls failed:', error);
     });
+  });
 });
 
 Template.statePrices.helpers({

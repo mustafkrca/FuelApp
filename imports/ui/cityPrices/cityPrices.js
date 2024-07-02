@@ -2,60 +2,50 @@ import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
 import { getSelectedState, setCities, getCities } from '../../lib/datas.js';
 import './cityPrices.html';
-import { fetchCityPrices } from '../../api/fuelPrices.js';
+import { Meteor } from 'meteor/meteor';
 
 Template.cityPrices.onCreated(function () {
-    this.state = new ReactiveVar(null); // Initialize reactive variable for state
+  this.state = new ReactiveVar(null); // Initialize reactive variable for state
 
-    this.autorun(() => {
-        
-
-        const selectedState = getSelectedState();
-        console.log('selectedState ----------------------------------',selectedState)
-        if (selectedState) {
-            fetchCityPrices(selectedState.split(' ')[0])
-                .then(citiesData => {
-                    setCities(citiesData.result.cities);
-                    this.state.set(citiesData.result.state); // Set the state data
-                    console.log('selectedState:', selectedState);
-                    console.log('citiesData:', citiesData.result);
-                })
-                .catch(error => {
-                    console.error('Failed to fetch city prices:', error);
-                });
+  this.autorun(() => {
+    const selectedState = getSelectedState();
+    if (selectedState) {
+      Meteor.call('fetch.cityPrices', selectedState.split(' ')[0], (error, citiesData) => {
+        if (error) {
+          console.log('Failed to fetch city prices:', error);
+          return;
         }
-    });
 
+        setCities(citiesData.result.cities);
+        this.state.set(citiesData.result.state); // Set the state data
+      });
+    }
+  });
 });
 
 Template.cityPrices.helpers({
-    cities() {
-        const cities = getCities();
-        const cityCodes = cities.map(city => {
-            return {
-                ...city,
-                cityCode: city.name.substring(0, 2).toUpperCase() // Capitalize first two letters
-            };
-        });
-        return cityCodes;
-    },
-    state() {
-        const state = Template.instance().state.get(); // Retrieve state data
-        const selectedState = getSelectedState();
-        const stateCode = selectedState ? selectedState.split(' ')[0] : ''; // Extract state code
+  cities() {
+    const cities = getCities();
+    const cityCodes = cities.map(city => ({
+      ...city,
+      cityCode: city.name.substring(0, 2).toUpperCase() // Capitalize first two letters
+    }));
+    return cityCodes;
+  },
+  state() {
+    const instance = Template.instance();
+    const state = instance.state.get(); // Retrieve state data
+    const selectedState = getSelectedState();
+    const stateCode = selectedState ? selectedState.split(' ')[0] : ''; // Extract state code
 
-        return {
-            ...state,
-            stateCode: stateCode
-        };
-    },
-    stateBool(){
-        const selectedState = getSelectedState();
+    return {
+      ...state,
+      stateCode: stateCode
+    };
+  },
+  stateBool() {
+    const selectedState = getSelectedState();
 
-        if (!selectedState) {
-            return false;
-        }
-        return true;
-    }
-
+    return !!selectedState; // Convert to boolean
+  }
 });

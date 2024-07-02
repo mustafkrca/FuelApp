@@ -1,56 +1,50 @@
+//imports/api/fuelPrices.js
+
+
+import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
 
 const API_KEY = 'apikey 3FodQlgMPR5xQTul1EUCUY:0lsxvXqa2Qu9RDQP7vzUyt';
 const BASE_URL = 'https://api.collectapi.com/gasPrice';
 
 export const fetchStatePrices = () => {
-  return new Promise((resolve, reject) => {
-    HTTP.call('GET', `${BASE_URL}/allUsaPrice`, {
+  try {
+    const result = HTTP.call('GET', `${BASE_URL}/allUsaPrice`, {
       headers: {
         'content-type': 'application/json',
         authorization: API_KEY,
       },
-    }, (error, result) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(JSON.parse(result.content));
-      }
     });
-  });
+    return JSON.parse(result.content);
+  } catch (error) {
+    throw new Meteor.Error('fetch-state-prices-failed', 'Failed to fetch state prices', error);
+  }
 };
 
 export const fetchCityPrices = (stateCode) => {
-  return new Promise((resolve, reject) => {
-    HTTP.call('GET', `${BASE_URL}/stateUsaPrice?state=${stateCode}`, {
+  try {
+    const result = HTTP.call('GET', `${BASE_URL}/stateUsaPrice?state=${stateCode}`, {
       headers: {
         'content-type': 'application/json',
         authorization: API_KEY,
       },
-    }, (error, result) => {
-      if (error) {
-        reject(error);
-      } else {  
-        resolve(JSON.parse(result.content));
-      }
     });
-  });
+    return JSON.parse(result.content);
+  } catch (error) {
+    throw new Meteor.Error('fetch-city-prices-failed', 'Failed to fetch city prices', error);
+  }
 };
 
-
 export const fetchStateCodes = () => {
-  return new Promise((resolve, reject) => {
-    HTTP.call('GET', `${BASE_URL}/usaStateCode`, {
+  try {
+    const result = HTTP.call('GET', `${BASE_URL}/usaStateCode`, {
       headers: {
         'content-type': 'application/json',
         authorization: API_KEY,
       },
-    }, (error, result) => {
-      if (error) {
-        reject(error);
-      } else {
-        resolve(JSON.parse(result.content).result);
-      }
     });
-  });
+    return JSON.parse(result.content).result;
+  } catch (error) {
+    throw new Meteor.Error('fetch-state-codes-failed', 'Failed to fetch state codes', error);
+  }
 };
