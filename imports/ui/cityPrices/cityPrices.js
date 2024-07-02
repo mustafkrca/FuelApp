@@ -1,6 +1,6 @@
 import { Template } from 'meteor/templating';
 import { ReactiveVar } from 'meteor/reactive-var';
-import { getSelectedState, setCities, getCities } from '../../lib/datas.js';
+import { getSelectedState, setCities, getCities, setError } from '../../lib/datas.js';
 import './cityPrices.html';
 import { Meteor } from 'meteor/meteor';
 
@@ -13,6 +13,7 @@ Template.cityPrices.onCreated(function () {
       Meteor.call('fetch.cityPrices', selectedState.split(' ')[0], (error, citiesData) => {
         if (error) {
           console.log('Failed to fetch city prices:', error);
+          setError('Failed to fetch city prices. Please try again later.');
           return;
         }
 
@@ -45,7 +46,6 @@ Template.cityPrices.helpers({
   },
   stateBool() {
     const selectedState = getSelectedState();
-
     return !!selectedState; // Convert to boolean
   }
 });

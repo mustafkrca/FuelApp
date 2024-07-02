@@ -1,8 +1,6 @@
-//imports/ui/statePrices/statePrices.js
-
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
-import { setStates, getStates, setStateCodes, getStateCodes } from '../../lib/datas.js';
+import { setStates, getStates, setStateCodes, getStateCodes, setError } from '../../lib/datas.js';
 import './statePrices.html';
 
 Template.statePrices.onCreated(function () {
@@ -12,12 +10,14 @@ Template.statePrices.onCreated(function () {
     Meteor.call('fetch.statePrices', (error, statePricesData) => {
       if (error) {
         console.error('Error fetching state prices:', error);
+        setError('Failed to fetch state prices. Please try again later.');
         return;
       }
 
       Meteor.call('fetch.stateCodes', (error, stateCodesData) => {
         if (error) {
           console.error('Error fetching state codes:', error);
+          setError('Failed to fetch state codes. Please try again later.');
           return;
         }
 

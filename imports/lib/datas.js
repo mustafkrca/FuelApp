@@ -5,6 +5,7 @@ const statesVar = new ReactiveVar([]);
 const citiesVar = new ReactiveVar([]);
 const stateCodesVar = new ReactiveVar([]);
 const selectedStateVar = new ReactiveVar(null); // Seçilen eyalet için yeni reaktif değişken
+const errorVar = new ReactiveVar(null); // Hatalar için reaktif değişken
 
 // Setters
 const setStates = (newStates) => {
@@ -21,6 +22,10 @@ const setStateCodes = (newStateCodes) => {
 
 const setSelectedState = (newState) => {
   selectedStateVar.set(newState);
+};
+
+const setError = (error) => {
+  errorVar.set(error);
 };
 
 // Getters
@@ -40,4 +45,8 @@ const getSelectedState = () => {
   return selectedStateVar.get();
 };
 
-export { setStates, getStates, setCities, getCities, setStateCodes, getStateCodes, setSelectedState, getSelectedState };
+const getError = () => {
+  return errorVar.get();
+};
+
+export { setStates, getStates, setCities, getCities, setStateCodes, getStateCodes, setSelectedState, getSelectedState, setError, getError };

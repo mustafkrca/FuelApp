@@ -1,7 +1,6 @@
 import { Template } from 'meteor/templating';
-import { getStates, setSelectedState } from '../../lib/datas.js'; // Import setSelectedState and getSelectedState
+import { getStates, setSelectedState, getError } from '../../lib/datas.js'; // Import setSelectedState and getError
 import { ReactiveVar } from 'meteor/reactive-var';
-
 import './navbarSlider.html';   
 import '../statePrices/statePrices.js';
 import '../statePrices/statePrices.html';
@@ -25,6 +24,9 @@ Template.navbarSlider.helpers({
   },
   isActiveTab(tabName) {
     return Template.instance().activeTab.get() === tabName;
+  },
+  error() {
+    return getError(); // Get error message if any
   }
 });
 
