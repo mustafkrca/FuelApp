@@ -5,23 +5,23 @@
       Fuel Prices
     </h1>
     {{#if isActiveTab 'cityPrices'}}
-    <div id="city-dropdown" class="dropdown">
-      <button
-        class="btn btn-secondary dropdown-toggle"
-        type="button"
-        id="dropdownMenuButton"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
-        Select State
-      </button>
-      <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        {{#each states}}
-        <a class="dropdown-item" href="#">{{stateCode}} - {{state}}</a>
-        {{/each}}
+      <div id="city-dropdown" class="dropdown">
+        <button
+          class="btn btn-secondary dropdown-toggle"
+          type="button"
+          id="dropdownMenuButton"
+          data-toggle="dropdown"
+          aria-haspopup="true"
+          aria-expanded="false"
+        >
+          Select State
+        </button>
+        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+          {{#each states}}
+            <a class="dropdown-item" href="#">{{stateCode}} - {{state}}</a>
+          {{/each}}
+        </div>
       </div>
-    </div>
     {{/if}}
   </div>
   <nav>
@@ -32,32 +32,26 @@
         data-toggle="tab"
         href="#statePrices"
         role="tab"
-        >State Prices</a
-      >
+      >State Prices</a>
       <a
         class="nav-item nav-link text-muted"
         id="nav-city-tab"
         data-toggle="tab"
         href="#cityPrices"
         role="tab"
-        >City Prices</a
-      >
+      >City Prices</a>
     </div>
   </nav>
   <div class="tab-content" id="nav-tabContent">
     {{#if error}}
-    <div class="alert alert-danger mt-5" role="alert">{{error}}</div>
+      <div class="alert alert-danger mt-5" role="alert">{{error}}</div>
     {{else}}
-    <div class="tab-pane fade show active" id="statePrices" role="tabpanel">
-      {{> statePrices}}
-    </div>
-    <div class="tab-pane fade" id="cityPrices" role="tabpanel">
-      {{> cityPrices}}
-    </div>
+      <div class="tab-pane fade show active" id="statePrices" role="tabpanel">
+        {{> statePrices}}
+      </div>
+      <div class="tab-pane fade" id="cityPrices" role="tabpanel">
+        {{> cityPrices}}
+      </div>
     {{/if}}
   </div>
-</template>
-
-<template name="errorTemplate">
-  <div class="alert alert-danger mt-4" role="alert">{{error}}</div>
 </template>

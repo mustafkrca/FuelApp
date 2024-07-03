@@ -4,7 +4,7 @@
 import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
 
-const API_KEY = 'apikey 7dRrMvjUTU4aE2h2ZkJCRS:048ywtXqbjU5EWpJeMx5U8';
+const API_KEY = Meteor.settings.private.apiKey;
 const BASE_URL = 'https://api.collectapi.com/gasPrice';
 
 export const fetchStatePrices = () => {
