@@ -1,12 +1,13 @@
 import { Template } from 'meteor/templating';
 import { Meteor } from 'meteor/meteor';
-import { setStates, getStates, setStateCodes, getStateCodes, setError } from '../../lib/datas.js';
+import { setStates, getStates, setStateCodes, getStateCodes, setError, setIsLoading, getIsLoading } from '../../lib/datas.js';
 import './statePrices.html';
 
 Template.statePrices.onCreated(function () {
-  const instance = this;
 
-  instance.autorun(() => {
+  this.autorun(() => {
+    setIsLoading(true);
+
     Meteor.call('fetch.statePrices', (error, statePricesData) => {
       if (error) {
         console.error('Error fetching state prices:', error);
@@ -30,15 +31,17 @@ Template.statePrices.onCreated(function () {
           const stateCodeObj = stateCodes.find(code => code.name === state.name);
           return {
             state: state.name,
-            stateCode: stateCodeObj ? stateCodeObj.code : '', 
+            stateCode: stateCodeObj ? stateCodeObj.code : '',
             regular: state.gasoline,
             midgrade: state.midGrade,
-            premium: state.premium, 
+            premium: state.premium,
             diesel: state.diesel
           };
         });
 
         setStates(newStateCodes);
+        setIsLoading(false);
+
       });
     });
   });
@@ -47,5 +50,9 @@ Template.statePrices.onCreated(function () {
 Template.statePrices.helpers({
   states() {
     return getStates();
+  }, 
+  isLoading() {
+    return getIsLoading();
   }
+
 });

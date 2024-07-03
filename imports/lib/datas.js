@@ -4,8 +4,9 @@ import { ReactiveVar } from 'meteor/reactive-var';
 const statesVar = new ReactiveVar([]);
 const citiesVar = new ReactiveVar([]);
 const stateCodesVar = new ReactiveVar([]);
-const selectedStateVar = new ReactiveVar(null); // Seçilen eyalet için yeni reaktif değişken
-const errorVar = new ReactiveVar(null); // Hatalar için reaktif değişken
+const selectedStateVar = new ReactiveVar(null); 
+const errorVar = new ReactiveVar(null); 
+const isLoadingVar = new ReactiveVar(false); 
 
 // Setters
 const setStates = (newStates) => {
@@ -28,6 +29,9 @@ const setError = (error) => {
   errorVar.set(error);
 };
 
+const setIsLoading = (loadingState) => {
+  isLoadingVar.set(loadingState);
+};
 // Getters
 const getStates = () => {
   return statesVar.get();
@@ -49,4 +53,9 @@ const getError = () => {
   return errorVar.get();
 };
 
-export { setStates, getStates, setCities, getCities, setStateCodes, getStateCodes, setSelectedState, getSelectedState, setError, getError };
+const getIsLoading = () => {
+  return isLoadingVar.get();
+};
+
+export { setStates, getStates, setCities, getCities, setStateCodes, getStateCodes, setSelectedState, getSelectedState, setError, getError, setIsLoading,
+  getIsLoading };

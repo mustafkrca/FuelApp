@@ -1,32 +1,37 @@
 <template name="statePrices">
-  <div class="container mt-5">
-    <div class="w-100 my-4">
-      <div class="row font-weight-bold text-secondary py-2">
-        <div class="col-4">State</div>
-        <div class="col-8 d-flex justify-content-end">
-          <div class="col-2 text-center">Regular</div>
-          <div class="col-2 text-center">Mid Grade</div>
-          <div class="col-2 text-center">Premium</div>
-          <div class="col-2 text-center">Diesel</div>
-        </div>
-      </div>
-      {{#each states}}
-      <div class="row bg-white rounded mb-2 shadow-sm py-3 align-items-center">
-        <div class="col-4 d-flex align-items-center">
-          <div class="text-white rounded-circle d-flex justify-content-center align-items-center mr-3" style="width: 32px; height: 32px; background-color: rgb(5 82 195) !important">
-            {{stateCode}}
-          </div>
-          <div>{{state}}</div>
-        </div>
-        <div class="col-8 d-flex justify-content-end">
-          <div class="col-2 text-center">${{regular}}</div>
-          <div class="col-2 text-center">${{midgrade}}</div>
-          <div class="col-2 text-center">${{premium}}</div>
-          <div class="col-2 text-center">${{diesel}}</div>
-        </div>
-      </div>
-      {{/each}}
-    </div>
-  </div>
-</template>
 
+    <div class="container mt-5">
+      {{#if isLoading}}
+      {{> loading}}
+      {{else}}
+        <div class="w-100 my-4">
+          <div class="row font-weight-bold text-secondary py-2">
+            <div class="col-4">State</div>
+            <div class="col-8 d-flex justify-content-end">
+              <div class="col-2 text-center">Regular</div>
+              <div class="col-2 text-center">Mid Grade</div>
+              <div class="col-2 text-center">Premium</div>
+              <div class="col-2 text-center">Diesel</div>
+            </div>
+          </div>
+          {{#each states}}
+            <div class="row bg-white rounded mb-2 shadow-sm py-3 align-items-center">
+              <div class="col-4 d-flex align-items-center">
+                <div class="text-white rounded-circle d-flex justify-content-center align-items-center mr-3" style="width: 32px; height: 32px; background-color: rgb(5 82 195) !important">
+                  {{stateCode}}
+                </div>
+                <div>{{state}}</div>
+              </div>
+              <div class="col-8 d-flex justify-content-end">
+                <div class="col-2 text-center">${{regular}}</div>
+                <div class="col-2 text-center">${{midgrade}}</div>
+                <div class="col-2 text-center">${{premium}}</div>
+                <div class="col-2 text-center">${{diesel}}</div>
+              </div>
+            </div>
+          {{/each}}
+        </div>
+        {{/if}}
+      </div>
+
+</template>
