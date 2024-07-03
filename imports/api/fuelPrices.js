@@ -1,6 +1,4 @@
 //imports/api/fuelPrices.js
-
-
 import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
 

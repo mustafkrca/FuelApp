@@ -1,8 +1,7 @@
+/* client/main.css */
+
 body.custom-background {
   background-color: #e8ebf0;
-}
-.container{
-  margin-top: 70px;
 }
 
 .nav-tabs .nav-item.show .nav-link, 
