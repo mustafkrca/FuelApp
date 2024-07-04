@@ -1,57 +1,40 @@
 <template name="cityPrices">
   <div class="container mt-5">
-    {{#if isLoading}}
-      {{> loading}}
-    {{else}}
-      <div class="w-100 my-4">
-        <div class="row font-weight-bold text-secondary py-2">
-          <div class="col-4">State/City</div>
-          <div class="col-8 d-flex justify-content-end">
-            <div class="col-2 text-center">Gasoline</div>
-            <div class="col-2 text-center">Mid Grade</div>
-            <div class="col-2 text-center">Premium</div>
-            <div class="col-2 text-center">Diesel</div>
+    {{#if isLoading}} {{> loading}} {{else}}
+    <div class="w-100 my-4">
+      {{>headerRow}} {{#if stateBool}}
+      <div
+        class="row bg-white rounded mb-3 shadow-sm py-3 align-items-center"
+        style="border: 2px solid #ea00e6"
+      >
+        <div class="col-4 d-flex align-items-center">
+          <div
+            class="text-white rounded-circle d-flex justify-content-center align-items-center mr-3"
+            style="width: 32px; height: 32px; background-color: #ea00e6"
+          >
+            {{state.stateCode}}
           </div>
+          <div>{{state.name}}</div>
         </div>
-
-        {{#if stateBool}}
-        <div class="row bg-white rounded mb-3 shadow-sm py-3 align-items-center" style="border: 2px solid #ea00e6">
-          <div class="col-4 d-flex align-items-center">
-            <div class="text-white rounded-circle d-flex justify-content-center align-items-center mr-3" style="width: 32px; height: 32px; background-color: #ea00e6">
-              {{state.stateCode}}
-            </div>
-            <div>{{state.name}}</div>
-          </div>
-          <div class="col-8 d-flex justify-content-end">
-            <div class="col-2 text-center">${{state.gasoline}}</div>
-            <div class="col-2 text-center">${{state.midGrade}}</div>
-            <div class="col-2 text-center">${{state.premium}}</div>
-            <div class="col-2 text-center">${{state.diesel}}</div>
-          </div>
+        <div class="col-8 d-flex justify-content-end">
+          <div class="col-2 text-center">${{state.gasoline}}</div>
+          <div class="col-2 text-center">${{state.midGrade}}</div>
+          <div class="col-2 text-center">${{state.premium}}</div>
+          <div class="col-2 text-center">${{state.diesel}}</div>
         </div>
-        {{else}}
-        <div class="row bg-white rounded mb-3 mt-3 shadow-sm py-3 align-items-center text-center text-danger font-weight-bold">
-          <div class="col-12">Please Select a State.</div>
-        </div>
-        {{/if}}
-        
-        {{#each cities}}
-        <div class="row bg-white rounded mb-2 shadow-sm py-3 align-items-center">
-          <div class="col-4 d-flex align-items-center">
-            <div class="text-white rounded-circle d-flex justify-content-center align-items-center mr-3" style="width: 32px; height: 32px; background-color: rgb(5 82 195) !important;">
-              {{cityCode}}
-            </div>
-            <div>{{name}}</div>
-          </div>
-          <div class="col-8 d-flex justify-content-end">
-            <div class="col-2 text-center">${{gasoline}}</div>
-            <div class="col-2 text-center">${{midGrade}}</div>
-            <div class="col-2 text-center">${{premium}}</div>
-            <div class="col-2 text-center">${{diesel}}</div>
-          </div>
-        </div>
-        {{/each}}
       </div>
+      {{else}}
+      <div
+        class="row bg-white rounded mb-3 mt-3 shadow-sm py-3 align-items-center text-center text-danger font-weight-bold"
+      >
+        <div class="col-12">Please Select a State.</div>
+      </div>
+      {{/if}} 
+      {{#each cities}} 
+      {{> priceRow code=cityCode name=name
+      regular=gasoline midgrade=midGrade premium=premium diesel=diesel}}
+      {{/each}}
+    </div>
     {{/if}}
   </div>
 </template>

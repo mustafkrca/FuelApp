@@ -9,7 +9,11 @@ import '../imports/ui/navbarSlider/navbarSlider.html';
 import '../imports/ui/navbarSlider/navbarSlider.js';
 import '../imports/ui/navbarSlider/navbarSlider.css';
 
-import '../imports/ui/loading/loading.html';
+import '../imports/components/loading/loading.html';
+
+import '../imports/components/priceRow/priceRow.html';
+
+import '../imports/components/headerRow/headerRow.html';
 
 import 'bootstrap/dist/js/bootstrap.bundle.js';
 import 'bootstrap/dist/css/bootstrap.css';

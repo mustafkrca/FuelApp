@@ -41,7 +41,7 @@ Template.navbarSlider.events({
     }
   },
   'click .dropdown-item'(event) {
-    const selectedState = event.target.text.trim(); 
+    const selectedState = event.target.text.trim().split(' ')[0]; //WA - Washington => WA
     setSelectedState(selectedState); 
   }
 });
