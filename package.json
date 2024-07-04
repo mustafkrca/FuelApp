@@ -1,5 +1,5 @@
 {
-  "name": "simple-todos-blaze",
+  "name": "FuelApp",
   "private": true,
   "scripts": {
     "start": "meteor run",

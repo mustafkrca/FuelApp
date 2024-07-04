@@ -11,27 +11,27 @@ Template.statePrices.onCreated(function () {
     Meteor.call('fetch.statePrices', (error, statePricesData) => {
       if (error) {
         console.error('Error fetching state prices:', error);
-        setError('Failed to fetch state prices. Please try again later.');
+        setError(`Failed to fetch state prices. Please try again later.${error}`);
         return;
       }
 
       Meteor.call('fetch.stateCodes', (error, stateCodesData) => {
         if (error) {
           console.error('Error fetching state codes:', error);
-          setError('Failed to fetch state codes. Please try again later.');
+          setError(`Failed to fetch state codes. Please try again later.${error}`);
           return;
         }
 
         setStates(statePricesData.result);
-        setStateCodes(stateCodesData); // Assuming stateCodesData is an array
+        setStateCodes(stateCodesData); 
 
         const statePrices = getStates();
         const stateCodes = getStateCodes();
         const newStateCodes = statePrices.map(state => {
-          const stateCodeObj = stateCodes.find(code => code.name === state.name);
+          const stateCode = stateCodes.find(code => code.name === state.name);
           return {
             state: state.name,
-            stateCode: stateCodeObj ? stateCodeObj.code : '',
+            stateCode: stateCode ? stateCode.code : '',
             regular: state.gasoline,
             midgrade: state.midGrade,
             premium: state.premium,
@@ -50,9 +50,8 @@ Template.statePrices.onCreated(function () {
 Template.statePrices.helpers({
   states() {
     return getStates();
-  }, 
+  },
   isLoading() {
     return getIsLoading();
   }
-
 });

@@ -7,6 +7,7 @@ import '../imports/ui/cityPrices/cityPrices.html';
 
 import '../imports/ui/navbarSlider/navbarSlider.html';
 import '../imports/ui/navbarSlider/navbarSlider.js';
+import '../imports/ui/navbarSlider/navbarSlider.css';
 
 import '../imports/ui/loading/loading.html';
 

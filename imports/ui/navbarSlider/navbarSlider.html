@@ -6,7 +6,7 @@
       Fuel Prices
     </h1>
     {{#if isActiveTab 'cityPrices'}}
-      <div id="city-dropdown" class="dropdown">
+      <div id="city-dropdown" class="dropdown custom-dropdown">
         <button
           class="btn btn-secondary dropdown-toggle"
           type="button"
@@ -17,9 +17,9 @@
         >
           Select State
         </button>
-        <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+        <div class="dropdown-menu custom-dropdown-menu" aria-labelledby="dropdownMenuButton">
           {{#each states}}
-            <a class="dropdown-item" href="#">{{stateCode}} - {{state}}</a>
+            <a class="dropdown-item custom-dropdown-item" href="#">{{stateCode}} - {{state}}</a>
           {{/each}}
         </div>
       </div>

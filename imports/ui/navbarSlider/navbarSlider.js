@@ -1,7 +1,8 @@
 import { Template } from 'meteor/templating';
-import { getStates, setSelectedState, getError } from '../../lib/datas.js'; // Import setSelectedState and getError
+import { getStates, setSelectedState, getError } from '../../lib/datas.js';
 import { ReactiveVar } from 'meteor/reactive-var';
 import './navbarSlider.html';   
+import './navbarSlider.css';   
 import '../statePrices/statePrices.js';
 import '../statePrices/statePrices.html';
 
@@ -11,7 +12,7 @@ Template.navbarSlider.onCreated(function () {
 
 Template.navbarSlider.helpers({
   states() {
-    const statesData = getStates(); // Get all state information
+    const statesData = getStates();
 
     if (statesData) {
       return statesData.map(state => ({
@@ -19,14 +20,14 @@ Template.navbarSlider.helpers({
         stateCode: state.stateCode
       }));
     } else {
-      return []; // Return empty array if no data available
+      return []; 
     }
   },
   isActiveTab(tabName) {
     return Template.instance().activeTab.get() === tabName;
   },
   error() {
-    return getError(); // Get error message if any
+    return getError();
   }
 });
 
@@ -40,7 +41,7 @@ Template.navbarSlider.events({
     }
   },
   'click .dropdown-item'(event) {
-    const selectedState = event.target.text.trim(); // Get the selected state from dropdown item text
-    setSelectedState(selectedState); // Set the selected state using setSelectedState function
+    const selectedState = event.target.text.trim(); 
+    setSelectedState(selectedState); 
   }
 });

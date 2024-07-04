@@ -5,22 +5,22 @@ import './cityPrices.html';
 import { Meteor } from 'meteor/meteor';
 
 Template.cityPrices.onCreated(function () {
-  this.state = new ReactiveVar(null); // Initialize reactive variable for state
+  this.state = new ReactiveVar(null); 
 
   this.autorun(() => {
-    setIsLoading(true); // Set loading to true before making the call
+    setIsLoading(true); 
     const selectedState = getSelectedState();
     if (selectedState) {
       Meteor.call('fetch.cityPrices', selectedState.split(' ')[0], (error, citiesData) => {
         if (error) {
           console.log('Failed to fetch city prices:', error);
-          setError('Failed to fetch city prices. Please try again later.');
+          setError(`Failed to fetch city prices. Please try again later.${error}`);
           return;
         }
         
         setCities(citiesData.result.cities);
-        this.state.set(citiesData.result.state); // Set the state data
-        setIsLoading(false); // Set loading to false once the call completes
+        this.state.set(citiesData.result.state); 
+        setIsLoading(false); 
       });
     } 
   });
@@ -31,14 +31,13 @@ Template.cityPrices.helpers({
     const cities = getCities();
     return cities.map(city => ({
       ...city,
-      cityCode: city.name.substring(0, 2).toUpperCase() // Capitalize first two letters
+      cityCode: city.name.substring(0, 2).toUpperCase() 
     }));
   },
   state() {
-    const instance = Template.instance();
-    const state = instance.state.get(); // Retrieve state data
+    const state = Template.instance().state.get(); 
     const selectedState = getSelectedState();
-    const stateCode = selectedState ? selectedState.split(' ')[0] : ''; // Extract state code
+    const stateCode = selectedState ? selectedState.split(' ')[0] : '';
 
     return {
       ...state,
@@ -47,7 +46,7 @@ Template.cityPrices.helpers({
   },
   stateBool() {
     const selectedState = getSelectedState();
-    return !!selectedState; // Convert to boolean
+    return !!selectedState; 
   },
   isLoading() {
     return getIsLoading();
