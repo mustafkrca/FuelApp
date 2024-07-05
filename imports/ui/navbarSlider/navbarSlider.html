@@ -2,41 +2,41 @@
   <div class="d-flex justify-content-between align-items-center mb-4">
     <h1>
       <!-- <img src="/assets/petrol-pump.png" style="width: 3vh" /> -->
-      <i class="fas fa-gas-pump" style="color: rgb(175, 30, 30);"></i>
+      <i class="fa-solid fa-gas-pump" style="color: rgb(175, 30, 30)"></i> 
       Fuel Prices
     </h1>
-    {{#if isActiveTab 'cityPrices'}}
-      {{> dropdownMenu}}
-    {{/if}}
+    {{#if isActiveTab 'cityPrices'}} {{> dropdownMenu}} {{/if}}
   </div>
   <nav>
     <div class="nav nav-tabs" id="nav-tab" role="tablist">
       <a
         class="nav-item nav-link active text-muted"
         id="nav-state-tab"
-        data-toggle="tab"
+        data-bs-toggle="tab"
         href="#statePrices"
         role="tab"
-      >State Prices</a>
+        >State Prices</a
+      >
       <a
         class="nav-item nav-link text-muted"
         id="nav-city-tab"
-        data-toggle="tab"
+        data-bs-toggle="tab"
         href="#cityPrices"
         role="tab"
-      >City Prices</a>
+        >City Prices</a
+      >
     </div>
   </nav>
   <div class="tab-content" id="nav-tabContent">
     {{#if error}}
-      <div class="alert alert-danger mt-5" role="alert">{{error}}</div>
+    <div class="alert alert-danger mt-5" role="alert">{{error}}</div>
     {{else}}
-      <div class="tab-pane fade show active" id="statePrices" role="tabpanel">
-        {{> statePrices}}
-      </div>
-      <div class="tab-pane fade" id="cityPrices" role="tabpanel">
-        {{> cityPrices}}
-      </div>
+    <div class="tab-pane fade show active" id="statePrices" role="tabpanel">
+      {{> statePrices}}
+    </div>
+    <div class="tab-pane fade" id="cityPrices" role="tabpanel">
+      {{> cityPrices}}
+    </div>
     {{/if}}
   </div>
 </template>

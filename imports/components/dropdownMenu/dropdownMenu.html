@@ -1,20 +1,19 @@
 <template name="dropdownMenu">
-    <div id="city-dropdown" class="dropdown custom-dropdown">
-      <button
-        class="btn btn-secondary dropdown-toggle"
-        type="button"
-        id="dropdownMenuButton"
-        data-toggle="dropdown"
-        aria-haspopup="true"
-        aria-expanded="false"
-      >
+  <div id="city-dropdown" class="dropdown custom-dropdown">
+    <button
+      class="btn btn-secondary dropdown-toggle"
+      type="button"
+      id="dropdownMenuButton"
+      data-bs-toggle="dropdown"
+      aria-haspopup="true"
+      aria-expanded="false"
+    >
       {{selectedState}}
-      </button>
-      <div class="dropdown-menu custom-dropdown-menu" aria-labelledby="dropdownMenuButton">
-        {{#each states}}
-          <a class="dropdown-item custom-dropdown-item" href="#">{{stateCode}} - {{state}}</a>
-        {{/each}}
-      </div>
-    </div>
-  </template>
-  
+    </button>
+    <ul class="dropdown-menu custom-dropdown-menu" aria-labelledby="dropdownMenuButton">
+      {{#each states}}
+        <li><a class="dropdown-item custom-dropdown-item" href="#">{{stateCode}} - {{state}}</a></li>
+      {{/each}}
+    </ul>
+  </div>
+</template>
