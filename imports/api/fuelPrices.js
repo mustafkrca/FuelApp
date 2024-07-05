@@ -3,7 +3,7 @@ import { Meteor } from 'meteor/meteor';
 import { HTTP } from 'meteor/http';
 
 const API_KEY = Meteor.settings.private.apiKey;
-const BASE_URL = 'https://api.collectapi.com/gasPrice';
+const BASE_URL = Meteor.settings.public.baseUrl;
 
 const fetchFromApi = (endpoint) => {
   try {

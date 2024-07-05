@@ -11,7 +11,7 @@ Template.cityPrices.onCreated(function () {
     setIsLoading(true); 
     const selectedState = getSelectedState();
     if (selectedState) {
-      Meteor.call('fetch.cityPrices', selectedState, (error, citiesData) => {
+      Meteor.call('fetch.cityPrices', selectedState.split(' ')[0], (error, citiesData) => {
         if (error) {
           console.log('Failed to fetch city prices:', error);
           setError(`Failed to fetch city prices. Please try again later.${error}`);

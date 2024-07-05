@@ -2,7 +2,7 @@
   <div class="container mt-5">
     {{#if isLoading}} {{> loading}} {{else}}
     <div class="w-100 my-4">
-      {{>headerRow}} {{#if stateBool}}
+      {{>headerRow}} 
       <div
         class="row bg-white rounded mb-3 shadow-sm py-3 align-items-center"
         style="border: 2px solid #ea00e6"
@@ -23,13 +23,6 @@
           <div class="col-2 text-center">${{state.diesel}}</div>
         </div>
       </div>
-      {{else}}
-      <div
-        class="row bg-white rounded mb-3 mt-3 shadow-sm py-3 align-items-center text-center text-danger font-weight-bold"
-      >
-        <div class="col-12">Please Select a State.</div>
-      </div>
-      {{/if}} 
       {{#each cities}} 
       {{> priceRow code=cityCode name=name
       regular=gasoline midgrade=midGrade premium=premium diesel=diesel}}
