@@ -1,26 +1,31 @@
-// imports/api/fuelPrices.js
 import { Meteor } from 'meteor/meteor';
-import { HTTP } from 'meteor/http';
+import { fetch, Headers } from 'meteor/fetch';
 
 const API_KEY = Meteor.settings.private.apiKey;
 const BASE_URL = Meteor.settings.public.baseUrl;
 
-const fetchFromApi = (endpoint) => {
+const fetchFromApi = async (endpoint) => {
   try {
-    const result = HTTP.call('GET', `${BASE_URL}/${endpoint}`, {
-      headers: {
-        'content-type': 'application/json',
-        authorization: API_KEY,
-      },
+    const response = await fetch(`${BASE_URL}/${endpoint}`, {
+      method: 'GET',
+      headers: new Headers({
+        'Content-Type': 'application/json',
+        'Authorization': API_KEY,
+      }),
     });
-    return JSON.parse(result.content);
+
+
+    return await response.json();
   } catch (error) {
-    throw new Meteor.Error(` ${error}`);
+    throw new Meteor.Error(`Fetch failed: ${error.message}`);
   }
 };
 
-export const fetchStatePrices = () => fetchFromApi('allUsaPrice');
+export const fetchStatePrices = async () => await fetchFromApi('allUsaPrice');
 
-export const fetchCityPrices = (stateCode) => fetchFromApi(`stateUsaPrice?state=${stateCode}`);
+export const fetchCityPrices = async (stateCode) => await fetchFromApi(`stateUsaPrice?state=${stateCode}`);
 
-export const fetchStateCodes = () => fetchFromApi('usaStateCode').result;
+export const fetchStateCodes = async () => {
+  const result = await fetchFromApi('usaStateCode');
+  return result.result;
+};
