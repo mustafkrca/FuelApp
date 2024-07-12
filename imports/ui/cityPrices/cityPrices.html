@@ -1,6 +1,8 @@
 <template name="cityPrices">
   <div class="container mt-5">
-    {{#if isLoading}} {{> loading}} {{else}}
+    {{#if isLoading}} 
+    {{> loading}} 
+    {{else}}
     <div class="w-100 my-4">
       {{>headerRow}} 
       <div
@@ -18,7 +20,7 @@
         </div>
         <div class="col-8 d-flex justify-content-end">
           <div class="col-2 text-center">${{state.gasoline}}</div>
-          <div class="col-2 text-center">${{state.midGrade}}</div>
+          <div class="col-2 ext-center">${{state.midGrade}}</div>
           <div class="col-2 text-center">${{state.premium}}</div>
           <div class="col-2 text-center">${{state.diesel}}</div>
         </div>
