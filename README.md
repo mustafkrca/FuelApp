@@ -1,46 +1,39 @@
-#  <img src="https://github.com/mustafkrca/HarflikPresentation/blob/main/logo.png" alt="Harflik Logo" width="50" align="top"> Harflik
+# Meteor Fuel Price App
 
-**Harflik**, oyuncuların her yaşta eğlenerek kelime bulmacaları çözebileceği, bağımlılık yapıcı bir oyun. 3 Ağustos 2024'te Google Play'de yayınlanacak olan bu oyun, yakın zamanda iOS platformunda da yerini alacak.
+Bu proje, çeşitli şehirler ve eyaletler için benzin fiyatlarını göstermek amacıyla Meteor ve Blaze kullanılarak geliştirilmiş bir web uygulamasıdır.
 
-## Genel Bakış
-Harflik, farklı kelimeler deneyerek harflerin konumuna göre yanan renge bakarak bulmaca tarzında doğru kelimeye ulaşma oyunudur.
-
-## Ekran Görüntüleri
-<div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
-    <img src="https://github.com/mustafkrca/HarflikPresentation/blob/main/img1.png" alt="Harflik Ana Menüsü" style="width: 23%; height: auto; margin: 1%;">
-    <img src="https://github.com/mustafkrca/HarflikPresentation/blob/main/img2.png" alt="Oyun Ekranı" style="width: 23%; height: auto; margin: 1%;">
-    <img src="https://github.com/mustafkrca/HarflikPresentation/blob/main/img3.png" alt="Günlük Meydan Okuma" style="width: 23%; height: auto; margin: 1%;">
-    <img src="https://github.com/mustafkrca/HarflikPresentation/blob/main/img4.png" alt="Liderlik Tablosu" style="width: 23%; height: auto; margin: 1%;">
+<div style="display: flex; flex-direction: row; justify-content: space-between;">
+  <img src="https://github.com/mustafkrca/FuelApp/blob/main/images/img1.png" width="45%" style="margin-right: 10px;"/>
+  <img src="https://github.com/mustafkrca/FuelApp/blob/main/images/img2.png" width="45%" style="margin-left: 10px;"/>
 </div>
 
-## Özellikler
-- **Etkileyici Oynanış:** Eğlenceli ve interaktif bir şekilde gizli kelimeleri bulun.
-- **Günlük Meydan Okumalar:** Her gün yeni bulmacalar.
-- **Liderlik Tablosu:** Arkadaşlarınız ve dünya çapındaki oyuncularla rekabet edin.
-- **Başarılar:** İlerledikçe çeşitli başarıların kilidini açın.
-- **İpuçları:** Zor kelimeleri bulmanıza yardımcı olacak ipuçları.
-- **Reklam Entegrasyonu:** Kullanıcı deneyimini artıran sorunsuz reklam entegrasyonu.
-- **Bildirimler:** Zamanında bilgilendirmelerle haberdar olun.
-- **Animasyonlar:** Oyun deneyimini keyifli kılan pürüzsüz ve çekici animasyonlar.
-- **Firebase Entegrasyonu:** Gerçek zamanlı güncellemeler ve bulut işlevsellikleri.
+<div style="display: flex; flex-direction: row; justify-content: space-between; margin-top: 20px;">
+  <img src="https://github.com/mustafkrca/FuelApp/blob/main/images/img3.png" width="45%" style="margin-right: 10px;"/>
+  <img src="https://github.com/mustafkrca/FuelApp/blob/main/images/img4.png" width="45%" style="margin-left: 10px;"/>
+</div>
 
-## Teknoloji Yığını
 
-### Frontend
-- **React Native:** Sorunsuz ve duyarlı bir mobil uygulama deneyimi.
-- **Firebase:** Bildirimler ve bulut işlevsellikleri için.
-- **Lottie:** Animasyonları canlandırmak için.
-- **AdMob:** Reklam entegrasyonu için.
+### Gereksinimler
+- API anahtarı (CollectAPI'den alınabilir)
 
-### Backend
-- **Node.js:** Kendi VDS sunucumda çalışmaktadır.
+## Kurulum
+### Gerekli Paketler
 
-### Veritabanı
-- **MongoDB:** Oyun verilerini (Kelime, Kelimenin Anlamı) depolamak için VDS sunucumda kuruludur.
+```sh
 
-## İletişim
-Herhangi bir soru veya geri bildirim için lütfen ulaşın:
-- Email: [mustafkrca@gmail.com](mailto:mustafkrca@gmail.com)
-- LinkedIn: [LinkedIn](https://www.linkedin.com/in/mustafa-karaca-222804192/)
+meteor npm install
+ ```
 
-Kodlar hesabımda private olarak tutulmaktadır.
+### settings.json
+```javascript
+{
+  "private": {
+    "apiKey": "YOUR_API_KEY_HERE"
+  }
+}
+ ```
+### Uygulamayı Yürütme
+```javascript
+
+meteor --settings settings.json
+```
