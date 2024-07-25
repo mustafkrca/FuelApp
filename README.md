@@ -1,11 +1,9 @@
-# Harflik
-
-![Harflik Logo](https://github.com/mustafkrca/HarflikPresentation/blob/main/logo.png)
+#  <img src="https://github.com/mustafkrca/HarflikPresentation/blob/main/logo.png" alt="Harflik Logo" width="50" align="top"> Harflik
 
 **Harflik**, oyuncuların her yaşta eğlenerek kelime bulmacaları çözebileceği, bağımlılık yapıcı bir oyun. 3 Ağustos 2024'te Google Play'de yayınlanacak olan bu oyun, yakın zamanda iOS platformunda da yerini alacak.
 
 ## Genel Bakış
-Harflik, Farklı kelimeler deneyerek haflerin konumuna göre yanan renge bakarak bulmaca tarzında doğru kelimeye ulaşma oyunudur.
+Harflik, farklı kelimeler deneyerek harflerin konumuna göre yanan renge bakarak bulmaca tarzında doğru kelimeye ulaşma oyunudur.
 
 ## Ekran Görüntüleri
 <div style="display: flex; flex-wrap: wrap; justify-content: space-between;">
@@ -38,14 +36,11 @@ Harflik, Farklı kelimeler deneyerek haflerin konumuna göre yanan renge bakarak
 - **Node.js:** Kendi VDS sunucumda çalışmaktadır.
 
 ### Veritabanı
-- **MongoDB:** Oyun verilerini(Kelime,Kelimenin Anlamı) depolamak için VDS sunucumda kuruludur.
+- **MongoDB:** Oyun verilerini (Kelime, Kelimenin Anlamı) depolamak için VDS sunucumda kuruludur.
 
 ## İletişim
 Herhangi bir soru veya geri bildirim için lütfen ulaşın:
 - Email: [mustafkrca@gmail.com](mailto:mustafkrca@gmail.com)
 - LinkedIn: [LinkedIn](https://www.linkedin.com/in/mustafa-karaca-222804192/)
-
-
-
 
 Kodlar hesabımda private olarak tutulmaktadır.
